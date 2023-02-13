@@ -58,6 +58,8 @@ set :config_example_suffix, '.example'
 set :config_files, %w[config/database.yml config/application.yml]
 set :nginx_use_ssl, false
 
+set :ssh_options, paranoid: false
+
 namespace :deploy do
   before 'check:linked_files', 'set:master_key'
   before 'check:linked_files', 'config:push'
