@@ -59,3 +59,15 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+
+server '167.99.134.110', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
+
+set :application, 'gh-ror-ed-2022'
+set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+
+set :environment, 'production'
+set :rails_env,   'production'
+
+set :nginx_server_name, '167.99.134.110'
+set :puma_conf, "#{shared_path}/config/puma.rb"
